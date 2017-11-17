@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <img src="{{ asset ('images/login.jpg') }}" class="bg">
+    <a class="custom-button" href="{{ path('reservation_new') }}">Reserve Table</a>
+
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

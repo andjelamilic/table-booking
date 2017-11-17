@@ -1,0 +1,35 @@
+version: '2'
+
+services:
+    db:
+        image: mysql
+        volumes:
+            - ./.data/database/db:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        ports:
+            - 3306:3306
+    php:
+        build: php7-fpm
+        volumes:
+            - ${APP_PATH}:/var/www/app
+            - ./.data/logs/app:/var/www/app/var/logs
+    apache2:
+        build: apache2
+        ports:
+            - 80:80
+        volumes_from:
+            - php
+        volumes:
+            - ./.data/logs/apache2/:/var/log/apache2
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - 8080:80
+        volumes:
+            - ./phpmyadmin/config/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
+        volumes_from:
+            - db
