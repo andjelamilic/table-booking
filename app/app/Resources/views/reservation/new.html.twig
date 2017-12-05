@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+        <!-- <img src="{{ asset ('images/floor1.jpg') }}" class="bg"> -->
+        <canvas id="scene" ></canvas>
+{% endblock %}
+
+
+{% block side %}
+    <canvas id="pallette"></canvas>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+
+
+        window.onload=function() {
+
+            var canP=napraviPaletu();
+            var canS=napraviScenu();
+
+            canS.add(new fabric.Rect({
+                left: 50,
+                top: 50,
+                height: 20,
+                width: 20,
+                fill: 'green'
+            }));
+            console.log(JSON.stringify(canS.toJSON()));
+
+            console.log(canS.isEmpty());
+
+        }
+
+
+    </script>
+{% endblock %}

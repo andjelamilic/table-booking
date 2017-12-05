@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% block stylesheets %}
+            <link type="text/css" rel="stylesheet" href="{{ asset ('css/bootstrap.min.css') }}" media="screen,projection"/>
+            <link type="text/css" rel="stylesheet" href="{{ asset ('css/style.css') }}" media="screen,projection"/>
+        {% endblock %}
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}Table Booking{% endblock %}</title>
+    </head>
+    <body>
+
+    <header>
+        <!--<img src="{{ asset ('images/logo.png') }}" class="logo"> -->
+        <span>Table Booking App</span>
+    </header>
+    <div id='main'>
+
+        <article>
+            {% block body %}
+            {% endblock %}
+        </article>
+
+        <aside>
+            {% block side%}
+            {% endblock %}
+        </aside>
+
+    </div>
+    <footer>@2017</footer>
+
+        {% block javascripts %}
+            <script type="text/javascript" src="{{ asset ('js/jquery-3.2.1.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset ('js/fabric.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset ('js/bootstrap.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset ('js/scene.js') }}"></script>
+            <script type="text/javascript" src="{{ asset ('js/pallette.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>
